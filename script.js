@@ -4,7 +4,7 @@ const lbResult = document.getElementById("lbResult");
 const lbWrongWords = document.getElementById("lbWrongWords");
 const timerElement = document.getElementById("timer");
 const btResetGame = document.getElementById("btResetGame");
-
+const backgroundMusic = document.getElementById("backgroundMusic");
 
 const timeLimit = 20; // 20 giây
 let timer;
@@ -40,6 +40,8 @@ function startGame() {
 
   setRandomText();
   updateTimer();
+  backgroundMusic.currentTime = 0; // Đặt lại thời gian phát nhạc về 0
+  backgroundMusic.play();
 }
 
 function startTimer() {
@@ -59,6 +61,7 @@ function endGame() {
   inputNum.disabled = true;
   btResetGame.disabled = false; // Cho phép nhấn nút reset khi trò chơi kết thúc
   lbResult.textContent = `Kết quả: ${wordCount} từ đúng`;
+  backgroundMusic.pause();
 }
 
 function setRandomText() {
